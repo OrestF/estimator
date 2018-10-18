@@ -7,5 +7,7 @@ module Estimation
 
     many_to_many :reports, class: 'Estimation::Report'
     many_to_one :user, class: 'User'
+    one_to_many :marks, class: 'Estimation::Mark'
+
   end
 end

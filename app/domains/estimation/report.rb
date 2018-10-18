@@ -12,5 +12,9 @@ module Estimation
     many_to_one :project, class: 'Estimation::Project'
     many_to_one :user, class: 'User'
     many_to_many :tasks, class: 'Estimation::Task'
+
+    def before_destroy
+      remove_all_tasks
+    end
   end
 end
