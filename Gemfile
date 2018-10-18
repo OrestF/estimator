@@ -14,12 +14,13 @@ gem 'jbuilder', '~> 2.5'
 
 
 gem 'sequel-rails'
-# Auth
 gem 'devise', '~> 4.5'
 gem 'sequel'
 gem 'sequel-devise', '~> 0.0.13'
 
 gem 'slim-rails', '~> 3.1', '>= 3.1.3'
+
+gem 'sequel_enum', '~> 0.1.1'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
