@@ -55,6 +55,17 @@ Sequel.migration do
       index [:id]
     end
     
+    create_table(:tasks) do
+      primary_key :id
+      column :title, "character varying(255)", :null=>false
+      column :technology, "integer", :null=>false
+      foreign_key :user_id, :users, :null=>false, :key=>[:id]
+      column :created_at, "timestamp without time zone", :null=>false
+      column :updated_at, "timestamp without time zone", :null=>false
+      
+      index [:id]
+    end
+    
     create_table(:reports) do
       primary_key :id
       column :technology, "integer", :null=>false
@@ -76,5 +87,6 @@ self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('2018101806354
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20181018093213_create_organizations_users.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20181018115923_create_projects.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20181018132824_create_reports.rb')"
+self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20181018154416_create_tasks.rb')"
                 end
               end

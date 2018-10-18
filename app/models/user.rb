@@ -13,6 +13,7 @@ class User < Sequel::Model
 
   def before_destroy
     remove_all_organizations
+    remove_all_reports
   end
 
   def will_save_change_to_email?
