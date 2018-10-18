@@ -8,5 +8,6 @@ class Organization < Sequel::Model
 
   def before_destroy
     remove_all_users
+    remove_all_projects
   end
 end

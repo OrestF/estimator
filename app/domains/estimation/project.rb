@@ -3,5 +3,6 @@ module Estimation
     include Timestampable
 
     many_to_one :organization
+    one_to_many :reports
   end
 end

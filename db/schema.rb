@@ -43,6 +43,29 @@ Sequel.migration do
       
       index [:user_id, :organization_id]
     end
+    
+    create_table(:projects) do
+      primary_key :id
+      column :name, "character varying(255)", :null=>false
+      column :description, "text"
+      foreign_key :organization_id, :organizations, :null=>false, :key=>[:id]
+      column :created_at, "timestamp without time zone", :null=>false
+      column :updated_at, "timestamp without time zone", :null=>false
+      
+      index [:id]
+    end
+    
+    create_table(:reports) do
+      primary_key :id
+      column :technology, "integer", :null=>false
+      column :status, "integer", :default=>0
+      foreign_key :user_id, :users, :null=>false, :key=>[:id]
+      foreign_key :project_id, :projects, :null=>false, :key=>[:id]
+      column :created_at, "timestamp without time zone", :null=>false
+      column :updated_at, "timestamp without time zone", :null=>false
+      
+      index [:id]
+    end
   end
 end
               Sequel.migration do
@@ -51,5 +74,7 @@ end
                   self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20180930111713_create_users.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20181018063543_create_organization.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20181018093213_create_organizations_users.rb')"
+self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20181018115923_create_projects.rb')"
+self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20181018132824_create_reports.rb')"
                 end
               end

@@ -7,6 +7,7 @@ class User < Sequel::Model
          :recoverable, :rememberable, :trackable, :validatable
 
   many_to_many :organizations
+  one_to_many :reports, class: 'Estimation::Report'
 
   # CALLBACKS
 
