@@ -21,6 +21,8 @@ gem 'sequel-devise', '~> 0.0.13'
 gem 'slim-rails', '~> 3.1', '>= 3.1.3'
 
 gem 'sequel_enum', '~> 0.1.1'
+gem 'rubocop', '~> 0.59.2'
+gem 'faker', '~> 1.9', '>= 1.9.1'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -44,7 +46,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails', '~> 4.11', '>= 4.11.1'
-  gem 'rspec-rails', '~> 3.8'
+  # gem 'rspec-rails', '~> 3.8'
+  gem 'rspec', '~> 3.8'
   gem 'database_cleaner', '~> 1.7'
 end
 
