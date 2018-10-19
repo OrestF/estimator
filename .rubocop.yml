@@ -1,0 +1,48 @@
+AllCops:
+  DisplayCopNames: true
+  StyleGuideCopsOnly: false
+  TargetRubyVersion: 2.5
+  Exclude:
+  - db/**/*
+  - script/**/*
+  - bin/**/*
+  - vendor/**/*
+  - tmp/**/*
+  - spec/fixtures/**/*
+  - config/initializers/**/*
+  - config/environments/**/*
+  - config/application.rb
+  - config/puma.rb
+  - ./Gemfile
+  - ./Rakefile
+  - ./config.ru
+
+Rails:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/RaiseArgs:
+  Exclude:
+  - spec/support/factory_bot.rb
+
+Rails/FilePath:
+  Exclude:
+  - spec/rails_helper.rb
+
+Metrics/LineLength:
+  Enabled: true
+  Max: 120
+
+Documentation:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    default: ()
+    '%i':   '[]'
+    '%I':   '[]'
+    '%r':   '{}'
+    '%w':   '[]'
+    '%W':   '[]'

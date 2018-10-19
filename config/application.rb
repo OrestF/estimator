@@ -30,6 +30,11 @@ module Estimator
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    config.sequel.after_connect = proc do
+      Sequel::Model.plugin :timestamps, update_on_create: true
+    end
+
+    config.autoload_paths += %W[#{config.root}/app/concerns]
     config.autoload_paths += %W[#{config.root}/app/domains]
   end
 end

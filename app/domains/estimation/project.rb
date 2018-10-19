@@ -1,8 +1,6 @@
 module Estimation
   class Project < Sequel::Model
-    include Timestampable
-
-    many_to_one :organization
-    one_to_many :reports
+    many_to_one :organization, class: 'Staff::Organization'
+    one_to_many :reports, class: 'Estimation::Report'
   end
 end
