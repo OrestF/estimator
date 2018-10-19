@@ -24,6 +24,8 @@ gem 'sequel_enum', '~> 0.1.1'
 gem 'rubocop', '~> 0.59.2'
 gem 'faker', '~> 1.9', '>= 1.9.1'
 
+gem 'dry-validation', '~> 0.12.2'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

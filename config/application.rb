@@ -34,7 +34,7 @@ module Estimator
       Sequel::Model.plugin :timestamps, update_on_create: true
     end
 
-    config.autoload_paths += %W[#{config.root}/app/concerns]
+    config.autoload_paths += %W[#{config.root}/app/lib]
     config.autoload_paths += %W[#{config.root}/app/domains]
   end
 end
