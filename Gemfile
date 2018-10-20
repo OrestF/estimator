@@ -25,6 +25,7 @@ gem 'rubocop', '~> 0.59.2'
 gem 'faker', '~> 1.9', '>= 1.9.1'
 
 gem 'dry-validation', '~> 0.12.2'
+gem 'dry-initializer', '~> 2.5'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

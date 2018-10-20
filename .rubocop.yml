@@ -35,6 +35,19 @@ Metrics/LineLength:
   Enabled: true
   Max: 120
 
+Metrics/MethodLength:
+  Max: 15
+
+Rails/Delegate:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 20
+
+Lint/NestedMethodDefinition:
+  Exclude:
+  - app/domains/staff/user_repo.rb
+
 Documentation:
   Enabled: false
 
