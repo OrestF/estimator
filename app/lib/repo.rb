@@ -1,26 +1,32 @@
 class Repo
   def all
-    model.all
+    model.all.map { |r| as_entity(r) }
+  end
+
+  def first
+    as_entity(model.first)
   end
 
   def last
-    model.last
+    as_entity(model.last)
   end
 
   def find(id)
-    model[id]
+    as_entity(model[id])
   end
+
+  # TODO: return Entities
 
   def create(params)
-    entity = model.new(params)
+    record = model.new(params)
 
-    validate_and_save(entity, params)
+    validate_and_save(record, params)
   end
 
-  def update(entity, params)
-    entity.set(params)
+  def update(record, params)
+    record.set(params)
 
-    validate_and_save(entity, params)
+    validate_and_save(record, params)
   end
 
   def destroy(entity)
@@ -35,7 +41,17 @@ class Repo
     @model ||= self.class.name.chomp('Repo').safe_constantize
   end
 
+  def entity
+    @entity ||= self.class.name.chomp('Repo').concat('Entity').safe_constantize
+  end
+
   protected
+
+  def as_entity(record)
+    return nil if record.nil?
+
+    entity.new record.values
+  end
 
   def validate_and_save(entity, params)
     validation = validate(entity.values.merge(params), entity)

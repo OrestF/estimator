@@ -5,4 +5,12 @@ module Entity
       mod.name.chomp('Entity').safe_constantize.columns.each { |column| option column, optional: true }
     end
   end
+
+  def repo
+    @repo ||= self.class.name.chomp('Entity').concat('Repo').safe_constantize.new
+  end
+
+  def to_h
+    as_json.with_indifferent_access
+  end
 end
