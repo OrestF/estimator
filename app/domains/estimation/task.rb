@@ -1,6 +1,7 @@
 module Estimation
   class Task < Sequel::Model
     plugin :enum
+    plugin :elasticsearch
     enum :technology, Estimation::Report::TECHNOLOGIES
 
     many_to_many :reports, class: 'Estimation::Report'

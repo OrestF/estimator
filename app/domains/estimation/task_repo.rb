@@ -1,14 +1,14 @@
 module Estimation
   class TaskRepo < ::Repo
-    # def find(id)
-    #   entity.new model[id].values
-    # end
-
     def destroy(entity)
       entity.remove_all_reports
       entity.marks.map(&:destroy)
 
       super(entity)
+    end
+
+    def plural?(word)
+      word.pluralize == word
     end
 
     %w[optimistic pessimistic].each do |type|
