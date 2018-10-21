@@ -37,6 +37,12 @@ class Repo
     entity.delete
   end
 
+  def purge_table
+    model.all.each do |r|
+      destroy(r)
+    end
+  end
+
   def model
     @model ||= self.class.name.chomp('Repo').safe_constantize
   end

@@ -1,7 +1,7 @@
 # TODO: remove later
 Estimation::Report.all.map(&:destroy)
-Estimation::Task.all.map(&:destroy)
-Staff::User.all.map(&:destroy)
+Estimation::TaskRepo.new.purge_table
+Staff::UserRepo.new.purge_table
 Estimation::Project.all.map(&:destroy)
 Staff::Organization.all.map(&:destroy)
 Estimation::Mark.all.map(&:destroy)
