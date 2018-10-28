@@ -1,13 +1,16 @@
 module Estimation
   module Task
     class Search
-      def self.title(search_string)
-        new('title', search_string).send(:search)
+      class InvalidTechnologyError < StandardError; end;
+
+      def self.for_report(search_string, technology)
+        new('title', search_string, technology).send(:search)
       end
 
-      def initialize(field, search_string)
+      def initialize(field, search_string, technology)
         @field = field
         @search_string = search_string
+        @technology = technology
       end
 
       private
@@ -15,13 +18,31 @@ module Estimation
       def search
         ::Estimation::Task::Model.es(send("#{@field}_query"))
       end
+      
+      def tech_index(tech_name)
+        raise InvalidTechnologyError.new unless technologies.include?(tech_name.to_sym)
+
+        technologies.index(tech_name.to_sym)
+      end
+
+      def technologies
+        Estimation::Report::Model::TECHNOLOGIES
+      end
 
       def title_query
         {
           query: {
             bool: {
-              must: @search_string.split(' ').map { |word| wildcard(word) }
+              must: @search_string.split(' ').map { |word| wildcard(word) }.append(tech_term)
             }
+          }
+        }
+      end
+
+      def tech_term
+        {
+          term: {
+            technology: tech_index(@technology)
           }
         }
       end
