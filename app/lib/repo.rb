@@ -44,7 +44,7 @@ class Repo
   end
 
   def model
-    @model ||= self.class.name.chomp('Repo').safe_constantize
+    @model ||= self.class.name.chomp('Repo').concat('Model').safe_constantize
   end
 
   def entity
