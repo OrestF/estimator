@@ -1,24 +1,18 @@
-# README
+# Estimator
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+Install:
 
-* Ruby version
+1. Create estimator_development, estimator_test DBs manually
 
-* System dependencies
+1. Comment devise_for :users, class_name: 'Staff::User::Model' in routes.rb
 
-* Configuration
+1. Uncomment app/config/initializers/sequel.rb
 
-* Database creation
+1. rake db:schema:load
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+1. rake db:seed
 
 * ...

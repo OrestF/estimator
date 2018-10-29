@@ -17,7 +17,7 @@ require './spec/support/factory_bot.rb'
 
 user = FactoryBot.create(:staff_user)
 project = FactoryBot.create(:estimation_project)
-report = FactoryBot.create(:estimation_report, project_id: project.id, user_id: user.id)
+report = FactoryBot.create(:estimation_report, id: (Estimation::Report::Model.max(:id).to_i + 1), project_id: project.id, user_id: user.id, created_at: Time.current) # this shit is necessary for some reason
 
 10.times do
   report.add_task(FactoryBot.create(:estimation_task))
