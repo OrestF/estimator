@@ -1,11 +1,11 @@
 module Estimation
   module Task
     class Repo < ::Repo
-      def destroy(entity)
-        entity.remove_all_reports
-        entity.marks.map(&:destroy)
+      def destroy(record)
+        record.remove_all_reports
+        record.marks.map(&:destroy)
 
-        super(entity)
+        super(record)
       end
 
       def plural?(word)
@@ -13,8 +13,8 @@ module Estimation
       end
 
       %w[optimistic pessimistic].each do |type|
-        define_method("avg_#{type}_mark") do |entity|
-          Estimation::Mark.where(task_id: entity.id).avg(type.to_sym)
+        define_method("avg_#{type}_mark") do |task|
+          Estimation::Mark.where(task_id: task.id).avg(type.to_sym)
         end
       end
 

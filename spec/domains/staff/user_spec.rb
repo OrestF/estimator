@@ -18,7 +18,7 @@ RSpec.describe Staff::User, type: :model do
   describe 'create user' do
     context 'with default factory' do
       it 'expect to be saved' do
-        expect { create(:staff_user) }.to change { Staff::User.count }.from(0).to(1)
+        expect { create(:staff_user) }.to change { Staff::User::Model.count }.from(0).to(1)
       end
     end
 

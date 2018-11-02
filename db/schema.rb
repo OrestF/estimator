@@ -78,6 +78,15 @@ Sequel.migration do
       index [:id]
     end
     
+    create_table(:projects_users) do
+      foreign_key :project_id, :projects, :null=>false, :key=>[:id]
+      foreign_key :user_id, :users, :null=>false, :key=>[:id]
+      
+      primary_key [:project_id, :user_id]
+      
+      index [:user_id, :project_id]
+    end
+    
     create_table(:reports) do
       primary_key :id
       column :technology, "integer", :null=>false
@@ -111,5 +120,6 @@ self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('2018101813282
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20181018154416_create_tasks.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20181018160136_create_tasks_reports.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20181018161531_create_marks.rb')"
+self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20181102150041_create_projects_users.rb')"
                 end
               end
