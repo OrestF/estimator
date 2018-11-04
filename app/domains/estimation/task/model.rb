@@ -1,6 +1,8 @@
 module Estimation
   module Task
     class Model < Sequel::Model(:tasks)
+      include Entity
+
       plugin :enum
       plugin :elasticsearch
       enum :technology, Estimation::Report::Model::TECHNOLOGIES

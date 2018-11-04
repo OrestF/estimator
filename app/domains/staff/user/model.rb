@@ -1,6 +1,8 @@
 module Staff
   module User
     class Model < Sequel::Model(:users)
+      include Entity
+      
       plugin :devise
 
       devise :database_authenticatable, :registerable,
@@ -17,6 +19,7 @@ module Staff
       one_to_many :reports, class: 'Estimation::Report::Model', key: :user_id
       one_to_many :marks, class: 'Estimation::Mark::Model', key: :user_id
       one_to_many :tasks, class: 'Estimation::Task::Model', key: :user_id
+
 
       def will_save_change_to_email?
         # fix for devise/sequel

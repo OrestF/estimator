@@ -1,6 +1,6 @@
 module Estimation
   module Project
-    class Assigner
+    class Assign
       def initialize(project, users)
         @project = project
         @users = filter_assigned(users)

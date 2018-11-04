@@ -15,8 +15,6 @@ class Repo
     model[id]
   end
 
-  # TODO: return Entities
-
   def create(params)
     record = model.new(params)
 
@@ -47,22 +45,12 @@ class Repo
     @model ||= self.class.name.chomp('Repo').concat('Model').safe_constantize
   end
 
-  # def entity
-  #   @entity ||= self.class.name.chomp('Repo').concat('Entity').safe_constantize
-  # end
-
   protected
 
-  # def as_entity(record)
-  #   return nil if record.nil?
-  #
-  #   entity.new record.values
-  # end
+  def validate_and_save(record, params)
+    validation = validate(record.values.merge(params), record)
 
-  def validate_and_save(entity, params)
-    validation = validate(entity.values.merge(params), entity)
-
-    return entity.save if validation.errors.none?
+    return record.save if validation.errors.none?
 
     validation.errors
   end

@@ -1,8 +1,11 @@
 module Staff
   module User
-    class Entity < Model
-      # extend ::Dry::Initializer
-      include ::Entity
+    module Entity
+      include BaseEntity
+
+      def proof
+        puts 'user'
+      end
     end
   end
 end

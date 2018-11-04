@@ -1,8 +1,7 @@
 module Estimation
   module Project
-    class Entity < Model
-      # extend ::Dry::Initializer
-      include ::Entity
+    module Entity
+      include BaseEntity
     end
   end
 end
