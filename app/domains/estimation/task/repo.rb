@@ -14,7 +14,7 @@ module Estimation
 
       %w[optimistic pessimistic].each do |type|
         define_method("avg_#{type}_mark") do |task|
-          Estimation::Mark.where(task_id: task.id).avg(type.to_sym)
+          Estimation::Mark::Model.where(task_id: task.id).avg(type.to_sym)
         end
       end
 

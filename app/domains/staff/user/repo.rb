@@ -6,6 +6,7 @@ module Staff
         entity.remove_all_organizations
         entity.remove_all_reports
         entity.remove_all_tasks
+        entity.remove_all_estimations
 
         super(entity)
       end

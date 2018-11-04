@@ -1,5 +1,5 @@
 # TODO: remove later
-Estimation::Report::Model.all.map(&:destroy)
+Estimation::Report::Repo.new.purge_table
 Estimation::Task::Repo.new.purge_table
 Staff::User::Repo.new.purge_table
 Estimation::Project::Model.all.map(&:destroy)
@@ -17,13 +17,15 @@ require './spec/support/factory_bot.rb'
 
 user = FactoryBot.create(:staff_user)
 project = FactoryBot.create(:estimation_project)
-report = FactoryBot.create(:estimation_report, id: (Estimation::Report::Model.max(:id).to_i + 1), project_id: project.id, user_id: user.id, created_at: Time.current) # this shit is necessary for some reason
+report = FactoryBot.create(:estimation_report, id: (Estimation::Report::Model.max(:id).to_i + 1), project_id: project.id, user_id: user.id, created_at: Time.current) # some shit happens here
+# report = FactoryBot.build(:estimation_report, project_id: project.id, user_id: user.id, created_at: Time.current)
+# report.save
 
 10.times do
   report.add_task(FactoryBot.create(:estimation_task))
 end
 
 20.times do
-  report.tasks.last.add_mark(FactoryBot.create(:estimation_mark))
-  report.tasks.first.add_mark(FactoryBot.create(:estimation_mark))
+  report.tasks.last.add_mark(FactoryBot.create(:estimation_mark, report_id: report.id))
+  report.tasks.first.add_mark(FactoryBot.create(:estimation_mark, report_id: report.id))
 end

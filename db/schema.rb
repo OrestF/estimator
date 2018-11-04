@@ -66,18 +66,6 @@ Sequel.migration do
       index [:id]
     end
     
-    create_table(:marks) do
-      primary_key :id
-      column :optimistic, "double precision", :null=>false
-      column :pessimistic, "double precision"
-      foreign_key :task_id, :tasks, :null=>false, :key=>[:id]
-      foreign_key :user_id, :users, :null=>false, :key=>[:id]
-      column :created_at, "timestamp without time zone", :null=>false
-      column :updated_at, "timestamp without time zone", :null=>false
-      
-      index [:id]
-    end
-    
     create_table(:projects_users) do
       foreign_key :project_id, :projects, :null=>false, :key=>[:id]
       foreign_key :user_id, :users, :null=>false, :key=>[:id]
@@ -97,6 +85,20 @@ Sequel.migration do
       column :updated_at, "timestamp without time zone", :null=>false
       
       index [:id]
+    end
+    
+    create_table(:marks) do
+      primary_key :id
+      column :optimistic, "double precision", :null=>false
+      column :pessimistic, "double precision"
+      foreign_key :task_id, :tasks, :null=>false, :key=>[:id]
+      foreign_key :user_id, :users, :null=>false, :key=>[:id]
+      column :created_at, "timestamp without time zone", :null=>false
+      column :updated_at, "timestamp without time zone", :null=>false
+      foreign_key :report_id, :reports, :key=>[:id]
+      
+      index [:id]
+      index [:report_id]
     end
     
     create_table(:reports_tasks) do
@@ -121,5 +123,6 @@ self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('2018101815441
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20181018160136_create_tasks_reports.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20181018161531_create_marks.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20181102150041_create_projects_users.rb')"
+self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20181104160122_add_report_id_to_marks.rb')"
                 end
               end

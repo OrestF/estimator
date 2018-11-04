@@ -4,5 +4,6 @@ FactoryBot.define do
     pessimistic { Faker::Number.decimal(1) }
     task_id { create(:estimation_task).id }
     user_id { create(:staff_user).id }
+    report_id { create(:estimation_report).id }
   end
 end
