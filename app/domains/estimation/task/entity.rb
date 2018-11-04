@@ -1,7 +1,7 @@
 module Estimation
   module Task
-    class Entity
-      extend ::Dry::Initializer
+    class Entity < Model
+      # extend ::Dry::Initializer
       include ::Entity
 
       def avg_optimistic_mark
