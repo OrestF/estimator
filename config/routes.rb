@@ -11,7 +11,8 @@ Rails.application.routes.draw do
       namespace :estimation do
         resources :tasks, only: [] do
           collection do
-            get :search
+            get :autocomplete
+            get :avg_marks
           end
         end
       end

@@ -15,6 +15,10 @@ class Repo
     model[id]
   end
 
+  def find!(id)
+    model.with_pk!(id)
+  end
+
   def create(params)
     record = model.new(params)
 
