@@ -11,9 +11,9 @@ module Estimation
           @project.add_estimator(user)
         end
       end
-      
-      private  
-      
+
+      private
+
       def filter_assigned(users)
         @users = Array(users) - @project.estimators
       end

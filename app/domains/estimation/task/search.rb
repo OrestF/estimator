@@ -1,7 +1,7 @@
 module Estimation
   module Task
     class Search
-      class InvalidTechnologyError < StandardError; end;
+      class InvalidTechnologyError < StandardError; end
 
       def self.for_report(search_string, technology)
         new('title', search_string, technology).send(:search)
@@ -18,7 +18,7 @@ module Estimation
       def search
         ::Estimation::Task::Model.es(send("#{@field}_query"))
       end
-      
+
       def tech_index(tech_name)
         raise InvalidTechnologyError.new unless technologies.include?(tech_name.to_sym)
 

@@ -13,7 +13,7 @@ module Estimation
       many_to_many :tasks, class: 'Estimation::Task::Model', join_table: :reports_tasks,
                                                              left_key: :report_id,
                                                              right_key: :task_id
-      
+
       def before_destroy
         remove_all_tasks
       end

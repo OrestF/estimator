@@ -3,7 +3,8 @@ module Api
     module Estimation
       class TasksController < ::ApiController
         def search
-          ::Estimation::Task::Search.for_report(params[:query], params[:technology]).as_json
+          tasks = ::Estimation::Task::Search.for_report(params[:query], params[:technology])
+          render json: ::Estimation::Task::Serializer.new(tasks).autocomplete
         end
       end
     end
