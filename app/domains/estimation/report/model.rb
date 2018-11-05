@@ -10,9 +10,10 @@ module Estimation
 
       many_to_one :project, class: 'Estimation::Project::Model'
       many_to_one :user, class: 'Staff::User::Model'
-      many_to_many :tasks, class: 'Estimation::Task::Model', join_table: :reports_tasks,
-                                                             left_key: :report_id,
-                                                             right_key: :task_id
+      many_to_many :tasks, class: 'Estimation::Task::Model',
+                           join_table: :reports_tasks,
+                           left_key: :report_id,
+                           right_key: :task_id
 
       def before_destroy
         remove_all_tasks

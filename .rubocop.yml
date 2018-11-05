@@ -9,6 +9,7 @@ AllCops:
   - vendor/**/*
   - tmp/**/*
   - spec/fixtures/**/*
+  - spec/support/**/*
   - config/initializers/**/*
   - config/environments/**/*
   - config/application.rb
@@ -59,3 +60,9 @@ Style/PercentLiteralDelimiters:
     '%r':   '{}'
     '%w':   '[]'
     '%W':   '[]'
+
+Lint/NestedMethodDefinition:
+  Enabled: false
+
+Naming/UncommunicativeMethodParamName:
+  Enabled: false

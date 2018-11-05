@@ -1,7 +1,6 @@
 module Staff
   module User
     class Repo < ::Repo
-
       def destroy(entity)
         entity.remove_all_organizations
         entity.remove_all_reports

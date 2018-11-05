@@ -20,7 +20,7 @@ module Estimation
       end
 
       def tech_index(tech_name)
-        raise InvalidTechnologyError.new unless technologies.include?(tech_name.to_sym)
+        raise InvalidTechnologyError, tech_name unless technologies.include?(tech_name.to_sym)
 
         technologies.index(tech_name.to_sym)
       end
