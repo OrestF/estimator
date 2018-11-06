@@ -1,6 +1,6 @@
 module Estimation
   module Task
-    class Serializer
+    class Serialize
       def initialize(task)
         @tasks = Array(task)
       end

@@ -1,8 +1,8 @@
 module Estimation
   module Report
     class Model < Sequel::Model(:reports)
-      STATUSES = %i[new in_progress completed].freeze
-      TECHNOLOGIES = %i[ruby python react design].freeze
+      STATUSES = %w[new in_progress completed].freeze
+      TECHNOLOGIES = %w[ruby python react design].freeze
 
       plugin :enum
       enum :status, STATUSES
@@ -17,6 +17,11 @@ module Estimation
 
       def before_destroy
         remove_all_tasks
+      end
+
+      def before_save
+        set(technology: TECHNOLOGIES.index(technology))
+        super
       end
     end
   end

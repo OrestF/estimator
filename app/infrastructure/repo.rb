@@ -53,7 +53,7 @@ class Repo
 
   def validate_and_save(record, params)
     validation = validate(record.values.merge(params), record)
-
+    byebug
     return record.save if validation.errors.none?
 
     validation.errors
