@@ -15,6 +15,9 @@ Rails.application.routes.draw do
             get :avg_marks
           end
         end
+
+        resources :reports, only: %i[index show create] do
+        end
       end
     end
   end

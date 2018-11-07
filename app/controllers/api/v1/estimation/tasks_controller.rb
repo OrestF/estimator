@@ -4,7 +4,7 @@ module Api
       class TasksController < ::ApiController
         def autocomplete
           tasks = ::Estimation::Task::Search.for_report(params[:query], params[:technology])
-          render json: ::Estimation::Task::Serialize.new(tasks).autocomplete
+          render json: ::Estimation::Task::Serializer.new(tasks).autocomplete
         end
 
         def avg_marks

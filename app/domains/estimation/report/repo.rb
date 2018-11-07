@@ -6,6 +6,7 @@ module Estimation
         super(entity)
       end
 
+      # rubocop:disable Metrics/MethodLength
       def validation_schema
         # TODO: dry-validation not the best choice for Model validation
 
@@ -28,10 +29,10 @@ module Estimation
 
           required(:user_id).filled(user_exist?: :user_id)
           required(:project_id).filled(project_exist?: :project_id)
-          byebug
           required(:technology).filled(included_in?: Estimation::Report::Model::TECHNOLOGIES)
         end
       end
+      # rubocop:enable Metrics/MethodLength
     end
   end
 end

@@ -9,8 +9,6 @@ module Estimation
       def call
         @repo.create(@params)
       end
-
-      private
     end
   end
 end
